@@ -1,0 +1,122 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+header, footer {
+    background-color: #4CAF50;
+    color: white;
+    padding: 1.5em 0;
+    text-align: center;
+    background-image: url('images/header-bg.jpg');
+    background-size: cover;
+    background-position: center;
+}
+header h1 {
+    font-size: 2.5em;
+    margin-bottom: 0.3em;
+}
+nav a {
+    color: #fff;
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: color 0.3s ease;
+    font-weight: 500;
+    position: relative;
+    padding: 5px 0;
+}
+nav a:hover {
+    color: greenyellow;
+}
+nav a::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: #ffffff; /* Line color matches hover color */
+    transition: width 0.3s ease;
+}
+nav a:hover::after{
+    width: 100%;
+}
+section {
+    padding: 20px;
+    background: white;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 10000px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+h2 {
+    color: #4CAF50;
+    margin-bottom: 0.5em;
+    font-size: 1.8em;
+}
+button {
+    background-color:#45a049;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition:0.3s;
+}
+button:hover {
+    background-color: #45a049;
+    color: azure;
+    transition: 4s
+}
+footer {
+    text-align: center;
+    padding: 20px;
+    color: #fff;
+    background-color: #333;
+}
+footer p {
+    margin: 0;
+    font-size: 1em;
+}
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+.container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+#community-posts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.post {
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+}
+.post p {
+    margin-bottom: 10px;
+}
+.post-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.post-header span {
+    color: #777;
+    font-size: 0.9em;
+}

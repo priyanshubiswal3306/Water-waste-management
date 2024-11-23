@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fix the Water Leak Game</title>
+<style>
+  body { text-align: center; font-family: Arial, sans-serif; }
+  #gameCanvas { background-color: #dcdcdc; margin-top: 20px; }
+  .leak { width: 20px; height: 20px; background: blue; position: absolute; cursor: pointer; border-radius: 50%; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Game</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="methods.html">Methods</a>
+        <a href="resources.html">Resources</a>
+        <a href="community.html">Community</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="game1.html">Game</a>
+    </nav>
+</header>
+
+<h1>Fix the Water Leak Game</h1>
+<p>Click on the leaks to fix them before they waste too much water!</p>
+<p>Leaks fixed: <span id="score">0</span></p>
+<canvas id="gameCanvas" width="400" height="500"></canvas>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+let score = 0;
+let leaks = [];
+
+function createLeak() {
+  const x = Math.random() * (canvas.width - 20);
+  const y = Math.random() * (canvas.height - 20);
+  const leak = { x: x, y: y };
+  leaks.push(leak);
+  drawLeak(leak);
+  setTimeout(() => {
+    if (leaks.includes(leak)) leaks.splice(leaks.indexOf(leak), 1);
+  }, 2000);
+}
+
+function drawLeak(leak) {
+  ctx.fillStyle = "blue";
+  ctx.beginPath();
+  ctx.arc(leak.x + 10, leak.y + 10, 10, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function updateCanvas() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  leaks.forEach(drawLeak);
+  requestAnimationFrame(updateCanvas);
+}
+
+canvas.addEventListener('click', function(event) {
+  const rect = canvas.getBoundingClientRect();
+  const mouseX = event.clientX - rect.left;
+  const mouseY = event.clientY - rect.top;
+
+  for (let i = leaks.length - 1; i >= 0; i--) {
+    const leak = leaks[i];
+    if (mouseX >= leak.x && mouseX <= leak.x + 20 && mouseY >= leak.y && mouseY <= leak.y + 20) {
+      leaks.splice(i, 1);
+      score += 1;
+      document.getElementById("score").textContent = score;
+    }
+  }
+});
+
+setInterval(createLeak, 1000);
+updateCanvas();
+</script>
+</body>
+</html>
+

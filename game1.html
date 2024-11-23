@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Water Drop Catcher</title>
+<style>
+  body { text-align: center; font-family: Arial, sans-serif; }
+  #gameCanvas { background-color: #87ceeb; margin-top: 20px; }
+</style>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Game</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="methods.html">Methods</a>
+        <a href="resources.html">Resources</a>
+        <a href="community.html">Community</a>
+        <a href="quiz.html">Quiz</a>
+        <a href="game1.html">Game</a>
+    </nav>
+</header>
+
+<h1>Water Drop Catcher Game</h1>
+<p>Move the bucket with arrow keys to catch the water drops!</p>
+<canvas id="gameCanvas" width="400" height="500"></canvas>
+
+<script>
+const canvas = document.getElementById('gameCanvas');
+const ctx = canvas.getContext('2d');
+
+let bucketX = canvas.width / 2 - 30;
+let bucketY = canvas.height - 30;
+let bucketWidth = 60;
+let bucketHeight = 20;
+let score = 0;
+let lives = 5;
+let waterDrops = [];
+
+function drawBucket() {
+  ctx.fillStyle = "#654321";
+  ctx.fillRect(bucketX, bucketY, bucketWidth, bucketHeight);
+}
+
+function createWaterDrop() {
+  const x = Math.random() * canvas.width;
+  waterDrops.push({ x: x, y: 0, radius: 10 });
+}
+
+function drawWaterDrops() {
+  ctx.fillStyle = "#1e90ff";
+  waterDrops.forEach(drop => {
+    ctx.beginPath();
+    ctx.arc(drop.x, drop.y, drop.radius, 0, Math.PI * 2);
+    ctx.fill();
+  });
+}
+
+function updateWaterDrops() {
+  for (let i = waterDrops.length - 1; i >= 0; i--) {
+    waterDrops[i].y += 3;
+    if (waterDrops[i].y > canvas.height) {
+      lives -= 1;
+      waterDrops.splice(i, 1);
+      if (lives <= 0) alert("Game Over! Your score: " + score);
+    } else if (
+      waterDrops[i].y + waterDrops[i].radius > bucketY &&
+      waterDrops[i].x > bucketX && 
+      waterDrops[i].x < bucketX + bucketWidth
+    ) {
+      score += 10;
+      waterDrops.splice(i, 1);
+    }
+  }
+}
+
+function gameLoop() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  drawBucket();
+  drawWaterDrops();
+  updateWaterDrops();
+  ctx.fillStyle = "#000";
+  ctx.fillText("Score: " + score, 10, 20);
+  ctx.fillText("Lives: " + lives, 10, 40);
+  requestAnimationFrame(gameLoop);
+}
+
+document.addEventListener("keydown", function(event) {
+  if (event.key === "ArrowLeft" && bucketX > 0) bucketX -= 20;
+  if (event.key === "ArrowRight" && bucketX + bucketWidth < canvas.width) bucketX += 20;
+});
+
+setInterval(createWaterDrop, 1000);
+gameLoop();
+</script>
+<a href="game2.html"><input type="button"value="Next game" style="background-color: black; color:aliceblue"></a>
+</body>
+</html>

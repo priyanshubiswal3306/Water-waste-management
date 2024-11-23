@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Water Conservation Quiz</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="methods.html">Methods</a>
+            <a href="resources.html">Resources</a>
+            <a href="community.html">Community</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="game1.html">Game</a>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h2>Test Your Knowledge</h2>
+        <form id="quiz-form">
+            <div class="quiz-question">
+                <p>1. How much water can a dripping faucet waste in a day?</p>
+                <label><input type="radio" name="q1" value="0"> 1 liter</label>
+                <label><input type="radio" name="q1" value="1"> 20 liters</label>
+                <label><input type="radio" name="q1" value="0"> 100 liters</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>2. Which of these is a water-saving technique?</p>
+                <label><input type="radio" name="q2" value="1"> Taking shorter showers</label>
+                <label><input type="radio" name="q2" value="0"> Running water while brushing teeth</label>
+                <label><input type="radio" name="q2" value="0"> Washing small loads in a large washing machine</label>
+            </div>
+
+            <div class="quiz-question">
+                <p>3. Can rainwater be used for gardening?</p>
+                <label><input type="radio" name="q3" value="1"> Yes</label>
+                <label><input type="radio" name="q3" value="0"> No</label>
+            </div>
+
+            <button type="button" onclick="calculateScore()">Submit Quiz</button>
+        </form>
+        <p id="quiz-result"></p>
+    </section>
+<br>
+<header></header>
+<section class="container"> <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Quiz</title>
+    <style>
+      body { text-align: center; font-family: Arial, sans-serif; }
+      #quiz-container { max-width: 400px; margin: auto; }
+      button { padding: 10px 20px; margin-top: 20px; }
+    </style>
+    </head>
+    <body>
+    
+    <h1>Water Conservation Quiz</h1>
+    <div id="quiz-container">
+      <p id="question">Loading question...</p>
+      <button onclick="checkAnswer(true)">True</button>
+      <button onclick="checkAnswer(false)">False</button>
+      <p id="feedback"></p>
+      <p>Score: <span id="score">0</span></p>
+    </div>
+    
+    <script>
+    const questions = [
+      { question: "Turning off the tap while brushing saves water.", answer: true },
+      { question: "Using a hose to clean sidewalks is water-efficient.", answer: false },
+      { question: "Taking shorter showers can help conserve water.", answer: true },
+      { question: "Running a full dishwasher saves more water than hand washing.", answer: true },
+    ];
+    let currentQuestion = 0;
+    let score = 0;
+    
+    function loadQuestion() {
+      document.getElementById("question").textContent = questions[currentQuestion].question;
+      document.getElementById("feedback").textContent = "";
+    }
+    
+    function checkAnswer(answer) {
+      if (answer === questions[currentQuestion].answer) {
+        score += 10;
+        document.getElementById("feedback").textContent = "Correct!";
+      } else {
+        document.getElementById("feedback").textContent = "Try again!";
+      }
+      document.getElementById("score").textContent = score;
+      currentQuestion = (currentQuestion + 1) % questions.length;
+      setTimeout(loadQuestion, 1000);
+    }
+    
+    loadQuestion();
+    </script>
+    </body>
+    </html>
+    </section>
+
+    <footer>
+        <p>Test your knowledge and learn more about water conservation.</p>
+    </footer>
+
+    <script src="quizjs.js"></script>
+    
+</body> 
+</html>

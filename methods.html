@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Conservation Methods</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Water Conservation Methods</h1>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="methods.html">Methods</a>
+            <a href="resources.html">Resources</a>
+            <a href="community.html">Community</a>
+            <a href="quiz.html">Quiz</a>
+            <a href="game1.html">Game</a>
+        </nav>
+    </header>
+
+    <section class="container">
+        <h2>Smart Water Management</h2>
+        <p>Track your daily water usage to reduce wastage and conserve this valuable resource.</p>
+        
+        <div id="water-tracker">
+            <h3>Daily Water Tracker</h3>
+            <label for="water-input">Enter water usage in liters:</label>
+            <input type="number" id="water-input" min="0" placeholder="e.g., 5">
+            <button onclick="addWaterUsage()">Add</button>
+            <p>Total usage today: <span id="total-water">0</span> liters</p>
+            <p>Goal: <span id="water-goal">50</span> liters</p>
+            <progress id="water-progress" max="50" value="0"></progress>
+        </div>
+    </section>
+
+    <!-- New Section: Water-Saving Tips -->
+    <section class="container">
+        <h2>Water-Saving Tips</h2>
+        <p>Explore simple methods to save water and reduce wastage in your daily life:</p>
+        <ul class="water-saving-tips">
+            <li><strong>Take shorter showers:</strong> Reducing your shower time by a few minutes can save gallons of water.</li>
+            <li><strong>Fix leaks promptly:</strong> A dripping faucet can waste hundreds of liters of water each month.</li>
+            <li><strong>Use efficient appliances:</strong> Install low-flow showerheads and dual-flush toilets to reduce water usage.</li>
+            <li><strong>Water plants wisely:</strong> Water your garden in the early morning or late evening to minimize evaporation.</li>
+            <li><strong>Reuse water:</strong> Collect rainwater or use leftover water from washing vegetables to water plants.</li>
+            <li><strong>Turn off the tap while brushing:</strong> Save water by turning off the faucet when not in use.</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>Stay mindful of your water usage and contribute to a sustainable future.</p>
+    </footer>
+
+    <script src="water-tracker.js"></script>
+</body>
+</html>
